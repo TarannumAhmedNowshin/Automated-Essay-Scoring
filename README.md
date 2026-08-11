@@ -154,13 +154,34 @@ values will vary slightly on re-runs (see **Limitations**).
 
 - **Fine-tuned weights are not released** — only the training/evaluation code is
   provided, so reproducing requires the datasets and (for the LLMs) a CUDA GPU.
-- **Splits are not fully deterministic.** The Bangla BERT and LLM notebooks fix
-  the split seed (`random_state=42`), but the IndicBERT and MuRIL notebooks call
+- **IndicBERT splits are not seeded.** Most notebooks fix the split seed
+  (`random_state=42`), but the IndicBERT notebooks call
   `datasets.train_test_split` without a seed, so their splits — and therefore
   their metrics — differ between runs.
 - **No global training seed** is set, so results are not bit-for-bit reproducible.
 - The dataset is small and university-specific; treat the scores as indicative
   rather than production-grade.
+
+## Known issues
+
+These are known bugs in the notebooks. They are left as-is so the committed code
+still reproduces the exact outputs shown here (and reported in the thesis). The
+fix for each is noted for anyone who wants to re-run:
+
+- **IndicBERT — unseeded split.** Add `seed=42` to the two
+  `dataset.train_test_split(...)` calls to make runs reproducible.
+- **MuRIL — swapped metric variables.** In one MuRIL cell the test metrics are
+  computed with the true and predicted values reversed. RMSE and MAE are
+  unaffected (they are symmetric), but the reported **test R²** is wrong — swap
+  the arguments so it reads `calculate_metrics(test_actuals, test_predictions)`.
+- **MuRIL — "training" metrics reuse validation.** The MuRIL-large runs print a
+  "Training Set" row that is actually computed from the validation predictions;
+  a separate evaluation pass over the training set is needed for true training
+  metrics.
+- **Llama 3.1 8B — loss-curve cell.** The final plotting cell expects
+  `train_losses` / `val_losses`, which the training loop does not record. Track
+  the per-epoch losses during training before running that cell (otherwise it
+  raises `NameError`).
 
 ## Authors
 
