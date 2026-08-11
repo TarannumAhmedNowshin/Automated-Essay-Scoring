@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below."
+title: "Automated Essay Scoring System for Bangla Language"
+abstract: >-
+  Fine-tuning transformer encoders (Bangla BERT, IndicBERT, MuRIL) and
+  decoder-only large language models (Falcon, Llama) to score university-level
+  Bangla essays as a regression task. Undergraduate thesis, Department of
+  Computer Science and Engineering, BRAC University.
+type: software
+authors:
+  - family-names: Nowshin
+    given-names: Tarannum Ahmed
+  - family-names: Yusha
+    given-names: Tahiya Mysara
+  - family-names: Zubair
+    given-names: Moinuddin
+year: 2024
+license: MIT
+repository-code: "https://github.com/TarannumAhmedNowshin/Automated-Essay-Scoring"
+url: "https://github.com/TarannumAhmedNowshin/Automated-Essay-Scoring"
+keywords:
+  - automated essay scoring
+  - Bangla
+  - Bengali NLP
+  - natural language processing
+  - BERT
+  - MuRIL
+  - large language models

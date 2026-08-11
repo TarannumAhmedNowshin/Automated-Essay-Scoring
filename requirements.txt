@@ -1,0 +1,26 @@
+# Tested with Python 3.10–3.11. The version ranges below are what these
+# notebooks were developed against — adjust if your environment differs.
+#
+# IMPORTANT: transformers is capped below 4.46 on purpose. The notebooks use
+# `evaluation_strategy=...` (renamed to `eval_strategy` in transformers 4.46+).
+# If you must use a newer transformers, rename that argument. Also, if
+# `from transformers import AdamW` fails on your version, use
+# `from torch.optim import AdamW` instead (used by the MuRIL notebooks).
+
+# Core
+pandas>=2.0
+numpy>=1.24,<2.0
+scikit-learn>=1.3
+matplotlib>=3.7
+seaborn>=0.12
+
+# Deep learning / NLP
+torch>=2.1,<2.5
+transformers>=4.38,<4.46
+datasets>=2.14
+accelerate>=0.30
+
+# Required only for the LLM notebooks (4-bit quantized fine-tuning; needs CUDA)
+bitsandbytes>=0.43
+sentencepiece>=0.1.99
+sentencepiece

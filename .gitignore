@@ -1,0 +1,32 @@
+# Datasets (essay scripts are private student data — keep them local)
+data/*
+!data/README.md
+*.csv
+
+# Secrets / credentials
+.env
+*.token
+hf_token*
+
+# Model + training artifacts
+results/
+logs/
+checkpoints/
+*.pt
+*.bin
+*.safetensors
+wandb/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
